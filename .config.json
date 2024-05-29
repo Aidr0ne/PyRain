@@ -1,1 +1,1 @@
-{"arg": ["-e"],  "scripts": ["Encryption"], "description": ["Compress a file"], "version": 0.11}
+{"arg": ["-c"],  "scripts": ["Compresion"], "description": ["Compress a file"], "version": 0.11}
