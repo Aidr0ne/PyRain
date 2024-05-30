@@ -1,5 +1,6 @@
 import zlib
 import sys
+import Grabber
 
 class Compression:
     def __init__(self):
@@ -22,14 +23,13 @@ class Compression:
                 pass
         return False
             
-    def Determine_if_even(self, ls: list) -> int:   #Returns 2 int's divs and amm
+    def Determine_if_even(self, ls: list) -> int:  # Returns 2 int's divs and amm
         divs = 1
         amm = float(len(ls))
-        if (amm % 2) != 0:   #Checking id ls has a even number of items
+        if (amm % 2) != 0:  # Checking id ls has an even number of items
             divs += 1
             amm -= 1
         return divs, amm
-    
     def Determine_Length(self, divs: int, amm: int) -> int:
         while True:
             if amm / 2 >= 1:
@@ -108,5 +108,5 @@ class Compression:
         divs = self.Determine_Length(divs, amm)
         prep = self.Determine_binary_keys(ls, divs)
         encrypted = self.Compress(To, prep, divs)
+        Grabber.Write_key(file, prep)
         self.Write_binary(file, encrypted)
-        

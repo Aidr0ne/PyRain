@@ -13,3 +13,11 @@ def Check_For_Key(File: str) -> bool:
         if file == File:
             return True
     return False
+
+def add_json(name: str) -> str:
+    return name + ".json"
+
+def Write_key(File: str, content: str) -> None:
+    File = add_json(File)
+    with open(File, "w") as f:
+        f.write(str(content))

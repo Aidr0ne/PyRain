@@ -6,7 +6,7 @@ import random
 tips = ["This is a tip =-)", "Made by aidr0ne", "Polar bears are amazing!",
         "Did you know that this was made by one person"]
 
-Version = 0.2  # VERSION AT TIME OF DOWNLOAD
+Version = 0.21  # VERSION AT TIME OF DOWNLOAD
     
 if __name__ == "__main__":
     
@@ -57,7 +57,7 @@ if __name__ == "__main__":
         
     print(f"Rain a python compression tool V{version}")
 
-    print(tips[random.randint(0, len(tips))])
+    print(tips[random.randint(0, len(tips)-1)])
 
     Run = False
         
@@ -66,11 +66,12 @@ if __name__ == "__main__":
             Run = True
             with open(arg3, "r") as file:
                 To = file.read()
-                
+
             module = importlib.import_module(scripts[i])
-            run = module.Compression()
-            fl = arg2
-            run.Main(To, fl)
+            cls = getattr(module, Execute)
+            instance = cls()
+
+            instance.Main(To, arg3)
 
     if not Run:
         print("Sorry the file couldn't be found please make sure you put in the file path correctly"
