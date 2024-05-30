@@ -3,6 +3,9 @@ import struct
 import zlib
 import Grabber
 import importlib
+import random
+
+tips = ["This is a tip =-)", "Made by aidr0ne", "Polar bears are amazing!"]
 
 Version = 0.2 #VERSION AT TIME OF DOWNLOAD
     
@@ -39,6 +42,8 @@ if __name__ == "__main__":
         sys.exit(1)
         
     print(f"Rain a python compression tool V{version}")
+
+    print(tips[random.randint(0, len(tips))])
         
     for i in range(len(args)):
         if sys.argv[1] == args[i]:
