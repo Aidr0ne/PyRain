@@ -7,6 +7,11 @@ def Read_File(File: str) -> dict:
         
     return data
 
+def read_binary(file: str) -> str:
+    with open(file, "rb") as File:
+        data = File.read()
+    return data
+
 def Check_For_Key(File: str) -> bool:
     Dir = os.listdir('.')
     for file in Dir:
