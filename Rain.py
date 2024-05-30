@@ -18,6 +18,7 @@ if __name__ == "__main__":
             scripts = data["scripts"]  # scripts
             version = data["version"]  # version
             Description = data["description"]  # description
+            Execute = data["execute"]
             
         except Exception as e:
             print("Config Data corrupted")
@@ -58,11 +59,11 @@ if __name__ == "__main__":
 
     print(tips[random.randint(0, len(tips))])
 
-    run = False
+    Run = False
         
     for i in range(len(args)):
         if arg2 == args[i]:
-            run = True
+            Run = True
             with open(arg3, "r") as file:
                 To = file.read()
                 
@@ -71,7 +72,7 @@ if __name__ == "__main__":
             fl = arg2
             run.Main(To, fl)
 
-    if run == False:
-        print("Sorry the file coudnt be found please make sure you put in the file path correctly"
+    if not Run:
+        print("Sorry the file couldn't be found please make sure you put in the file path correctly"
               "and make sure it exists")
     
