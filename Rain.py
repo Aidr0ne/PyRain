@@ -70,7 +70,7 @@ if __name__ == "__main__":
                     To = file.read()
             except Exception as e:
                 To = ""
-                possibles = ["-d"]
+                possibles = [""]
                 a1 = False
                 for item in possibles:
                     if arg2 == item:
