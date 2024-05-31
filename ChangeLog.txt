@@ -1,8 +1,8 @@
 # V: 0 (DEVELOPMENT PHASE) -- DELTA
 |
-|- V: 0.1 Added main rain file //TODO: Add decompresion and choice selection module.
-|  |- V: 0.11 Added basic redundency measures and a config file to load mutiple scripts.
+|- V: 0.1 Added main rain file //TODO: Add decompression and choice selection module.
+|  |- V: 0.11 Added basic redundancy measures and a config file to load multiple scripts.
 |
-|- V: 0.2 Seperated encryption file from main file.
+|- V: 0.2 Separated encryption file from main file.
    |-V: 0.21 Added complete sorport for more modules and updated the compression module
-
+   |-V: 0.22 Compression now saves prep as a json file and Began work on the Decompression module

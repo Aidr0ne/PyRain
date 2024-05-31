@@ -2,11 +2,12 @@ import sys
 import Grabber
 import importlib
 import random
+import pygame
 
 tips = ["This is a tip =-)", "Made by aidr0ne", "Polar bears are amazing!",
         "Did you know that this was made by one person"]
 
-Version = 0.21  # VERSION AT TIME OF DOWNLOAD
+Version = 0.22  # VERSION AT TIME OF DOWNLOAD
     
 if __name__ == "__main__":
     
@@ -27,7 +28,7 @@ if __name__ == "__main__":
             sys.exit(1)
     else:
         print("Config file not found")
-        print("Goto: https://github.com/Aidr0ne/PyRain/tree/main To Restore config")
+        print("Go to: https://github.com/Aidr0ne/PyRain/tree/main To Restore config")
         sys.exit(1)
 
     arg1 = ""
@@ -64,16 +65,39 @@ if __name__ == "__main__":
     for i in range(len(args)):
         if arg2 == args[i]:
             Run = True
-            with open(arg3, "r") as file:
-                To = file.read()
+            try:
+                with open(arg3, "r") as file:
+                    To = file.read()
+            except Exception as e:
+                To = ""
+                possibles = ["-d"]
+                a1 = False
+                for item in possibles:
+                    if arg2 == item:
+                        a1 = True
+                    else:
+                        a1 = False
+
+                print(f"A Fatal error has occurred while trying to load {arg3}\n"
+                      f"Error: {e}\n"
+                      f"Is it possible to continue?: {a1}")
+                if a1:
+                    ask = input(f"It is possible to continue Do you want to?\n "
+                                "(WARNING MAY CAUSE CRASH OR DESTROY YOUR DATA), Please enter yes or no: ")
+                    if ask.lower() == "yes":
+                        pass
+                    else:
+                        sys.exit(1)
+                else:
+                    sys.exit(1)
 
             module = importlib.import_module(scripts[i])
-            cls = getattr(module, Execute)
+            cls = getattr(module, Execute[i])
             instance = cls()
 
             instance.Main(To, arg3)
 
     if not Run:
         print("Sorry the file couldn't be found please make sure you put in the file path correctly"
-              "and make sure it exists")
+              " and make sure it exists")
     

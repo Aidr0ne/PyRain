@@ -66,36 +66,24 @@ class Compression:
         
     
     def Remove_Extra_0s(self, bine: str, divs:int) -> str:
-        for i in range(8 - divs):
-            bine = bine[1:]
         return bine
     
     def Compress(self, To_encypt: str, prep: dict, divs: int) -> list:
         Encrypted = []
-        space = ""
-        for i in range(divs):
-            space = space + "0"
-        
-        space = int(space)
 
         for item in To_encypt:
             Encrypted.append(prep[item])
-            if item == " ":
-                Encrypted.append(space)
-        
+
         return Encrypted
     
     def Write_binary(self, output_file: str, binary_data_list: list) -> None:
         
         # Convert each number to an 8-bit binary string
         binary_strings = [format(num, '08b') for num in binary_data_list]
-
         # Join all binary strings into a single binary string
         binary_data = ''.join(binary_strings)
         binary_data = int(binary_data, 2).to_bytes((len(binary_data) + 7) // 8, byteorder='big')
         compressed_data = zlib.compress(binary_data)
-        print("Original size:", len(binary_data))
-        print("Compressed size:", len(compressed_data))
 
         with open(output_file, "wb") as f:
             f.write(compressed_data)
@@ -108,5 +96,7 @@ class Compression:
         divs = self.Determine_Length(divs, amm)
         prep = self.Determine_binary_keys(ls, divs)
         encrypted = self.Compress(To, prep, divs)
+        print(divs)
+        prep["divs"] = divs
         Grabber.Write_key(file, prep)
         self.Write_binary(file, encrypted)

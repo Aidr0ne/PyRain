@@ -12,6 +12,9 @@ def read_binary(file: str) -> str:
         data = File.read()
     return data
 
+def replace_single_quotes(input_string):
+    return input_string.replace("'", '"')
+
 def Check_For_Key(File: str) -> bool:
     Dir = os.listdir('.')
     for file in Dir:
@@ -25,4 +28,4 @@ def add_json(name: str) -> str:
 def Write_key(File: str, content: str) -> None:
     File = add_json(File)
     with open(File, "w") as f:
-        f.write(str(content))
+        json.dump(content, f, ensure_ascii=False, indent=4)
